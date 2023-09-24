@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仪表盘</title>
+    <style>
+        .aa {
+            width: 118px;
+            height: 118px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aa">
+
+    </div>
+    <script src="./echarts.min (2).js"></script>
+    <script>
+
+        let option = {
+            series: [
+                {
+                    type: 'gauge',
+                    pointer: {
+                        // 仪表盘指针
+                        //icon:'none',
+                        width: 5,
+                        length: "53%", //指针长度
+                        itemStyle: {
+                            color: '#50a5ba'
+                        },
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            width: 15,
+                            color: [[1, new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                                {
+                                    offset: 0,
+                                    color: '#b4f7f3', // 0% 处的颜色
+                                },
+                                {
+                                    offset: 1,
+                                    color: '#51a6ba', // 100% 处的颜色
+                                },
+                            ])]]
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: { //大刻度
+                        show: true,
+                        distance: 0,
+                        length: 10,
+                        lineStyle: {
+                            color: '#3c5371',
+                            width: 2
+                        }
+                    },
+                    axisLabel: { //刻度值
+                        show: false,
+                    },
+                    anchor: {
+                        show: true,
+                        showAbove: true,
+                        size: 10,
+                        itemStyle: {
+                            borderWidth: 4,
+                            color: '#fff',
+                            borderColor: 'red'
+                        }
+                    },
+                    title: {
+                        show: false
+                    },
+                    detail: {
+                        valueAnimation: true,
+                        fontSize: 20,
+                        offsetCenter: [0, '70%']
+                    },
+                    data: [
+                        {
+                            value: 70
+                        }
+                    ]
+                }
+            ]
+        };
+        echarts.init(document.getElementsByClassName('aa')[0]).setOption(option)
+    </script>
+</body>
+
+</html>
