@@ -2,23 +2,19 @@
   <div>11</div>
 </template>
 <script setup>
-import { inject, defineExpose, ref } from "vue";
+import { inject, defineExpose, ref, watch } from "vue";
 const message = inject("message");
-console.log("object :>> ", message);
-const aa = ref("0");
-let props = defineProps({
-  tableData: {
-   type:Array;
-   default:()=>{
-   return []
-   }
-  },
-});
+console.log("", message);
+const aa = ref("1");
+const props = defineProps(["tableData"]);
 defineExpose({
   aa,
   message,
 });
-watch(() =>props.tableData,(value)=>{
-debugger
-});
+watch(
+  () => props.tableData,
+  (value, prevValue) => {
+    debugger;
+  }
+);
 </script>

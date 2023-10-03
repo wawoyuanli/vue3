@@ -5,9 +5,9 @@ const service = axios.create({
   withCredentials: true,
   timeout: 15000,
 });
-service.defaults.headers.post['Content-Type'] = 'application/json';
+service.defaults.headers.post['Content-Type'] = 'application/json'
 service.interceptors.request.use(function (config) {
-  if(config.url.includes('init')){
+  if (config.url.includes('init')) {
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
   }
   return config;
@@ -18,7 +18,7 @@ service.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 service.interceptors.response.use(function (response) {
-  return Promise.resolve(response.data);
+  return Promise.resolve(response.data)
 }, function (error) {
   return Promise.reject(error);
 });
